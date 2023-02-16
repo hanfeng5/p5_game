@@ -1,0 +1,19 @@
+{
+  "name": "p5_game",
+  "version": "1.0.0",
+  "description": "This is a game that user need to move around the character to avoid obsticles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanfeng5/p5_game.git"
+  },
+  "author": "Han Feng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanfeng5/p5_game/issues"
+  },
+  "homepage": "https://github.com/hanfeng5/p5_game#readme"
+}
