@@ -4,7 +4,8 @@
   "description": "This is a game that user need to move around the character to avoid obsticles",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-dev-server --node-resolve --open --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/hanfeng5/p5_game/issues"
   },
-  "homepage": "https://github.com/hanfeng5/p5_game#readme"
+  "homepage": "https://github.com/hanfeng5/p5_game#readme",
+  "dependencies": {
+    "p5": "^1.5.0",
+    "p5.play": "^3.6.1"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.35"
+  }
 }
