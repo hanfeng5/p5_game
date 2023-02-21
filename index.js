@@ -6,12 +6,12 @@ let player;
 let pressedKeys = {};
 let speed = 3;
 let score;
+let gameOver;
 
 function createEnemy () {
-  setInterval(() => {
     groupSprites = new Group();
 
-  numGroundSprites = windowWidth / GROUND_SPRITE_WIDTH -20;
+    numGroundSprites = windowWidth / GROUND_SPRITE_WIDTH -20;
 
     for (var n = 0; n < numGroundSprites; n++) {
         var groundSprite1 = createSprite(
@@ -39,17 +39,51 @@ function createEnemy () {
         groundSprite3.velocity.y=num;
         groupSprites.add(groundSprite1);
         groupSprites.add(groundSprite2);
+        groupSprites.add(groundSprite3);
     }
-  }, 8000);
 }
   
 
 
 window.setup = () => {
-    score = 0;
-    createCanvas(windowWidth, windowHeight);
-    createEnemy();
-    player = createSprite(windowWidth/2, windowHeight-100, 30, 30);
+  // groupSprites = new Group()
+
+  // numGroundSprites = windowWidth / GROUND_SPRITE_WIDTH -20;
+
+  // for (var n = 0; n < numGroundSprites; n++) {
+  //   var groundSprite1 = createSprite(
+  //     windowWidth /6,
+  //     windowHeight - windowHeight + 100,
+  //     GROUND_SPRITE_WIDTH,
+  //     GROUND_SPRITE_HEIGHT
+  //   )
+  //   var groundSprite2 = createSprite(
+  //     windowWidth / 2,
+  //     windowHeight - windowHeight + 100,
+  //     GROUND_SPRITE_WIDTH,
+  //     GROUND_SPRITE_HEIGHT
+  //   )
+  //   var groundSprite3 = createSprite(
+  //     windowWidth / 1.25,
+  //     windowHeight - windowHeight + 100,
+  //     GROUND_SPRITE_WIDTH,
+  //     GROUND_SPRITE_HEIGHT
+  //   )
+  //   var num = Math.random()*2
+  //   // var num2 = Math.random()*2
+  //   groundSprite1.velocity.y=num
+  //   groundSprite2.velocity.y=num
+  //   groundSprite3.velocity.y=num
+  //   groupSprites.add(groundSprite1);
+  //   groupSprites.add(groundSprite2);
+  //   groupSprites.add(groundSprite3);
+  // }
+    
+  score = 0;
+  // setInterval(createEnemy,1000);
+  createCanvas(windowWidth, windowHeight);
+  player = createSprite(windowWidth/2, windowHeight-100, 30, 30);
+  gameOver = false;
 };
 
 
@@ -80,13 +114,29 @@ window.update = () => {
 
 
 window.draw = () => {
-  background(60);
-  drawSprites();
-  update();
-  score = score+1;
-  textAlign(CENTER);
-  text(score, camera.position.x, 50);
-  // playerMove()
+  if (score % 500 === 0) {
+    createEnemy();
+  }
+  if (gameOver){
+    groupSprites.remove();
+    player.remove();
+    background(255);
+    fill(0);
+    textAlign(CENTER);
+    textSize(50);
+    text("You lasted: "   + score/100 + " seconds", camera.position.x, camera.position.y - 20);
+    noLoop();
+  } 
+  else {
+    background(60);
+    drawSprites();
+    update();
+    score += 1;
+    groupSprites.overlap(player,endGame);
+  }
+};
+window.endGame = () => {
+  gameOver = true;
 };
 
 window.keyReleased = () => {
@@ -97,6 +147,11 @@ window.keyPressed = () => {
   pressedKeys[keyCode] = true;
 };
 
+
+
+// function endGame() {
+//   gameOver = True;
+// }
 
 
 
