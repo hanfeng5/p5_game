@@ -1,7 +1,9 @@
+let spr;
 let groupSprites;
 let GROUND_SPRITE_WIDTH = 60;
 let GROUND_SPRITE_HEIGHT = 60;
 let numGroundSprites;
+let GRAVITY;
 let player;
 let pressedKeys = {};
 let speed = 3;
@@ -82,6 +84,7 @@ window.setup = () => {
   score = 0;
   // setInterval(createEnemy,1000);
   createCanvas(windowWidth, windowHeight);
+  GRAVITY = 1;
   player = createSprite(windowWidth/2, windowHeight-100, 30, 30);
   gameOver = false;
 };
