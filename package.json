@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/hanfeng5/p5_game/issues"
   },
-  "homepage": "https://github.com/hanfeng5/p5_game#readme",
+  "homepage": "https://github.com/hanfeng5/p5_game",
   "dependencies": {
     "p5": "^1.5.0",
     "p5.play": "^3.6.1"
