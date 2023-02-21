@@ -92,6 +92,7 @@ window.setup = () => {
 
 
 
+
 window.update = () => {
   let movement = createVector(0,0);
 
