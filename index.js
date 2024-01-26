@@ -133,7 +133,7 @@ window.draw = () => {
   } 
   else {
     background(60);
-    drawSprites();
+    //drawSprites();
     update();
     score += 1;
     groupSprites.overlap(player,endGame)
